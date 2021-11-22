@@ -2,28 +2,32 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './plugins/element.js'
+
 // 导入字体图标
 import './assets/fonts/iconfont.css'
 // 导入全局样式表
 import './assets/css/global.css'
 
 import TreeTable from 'vue-table-with-tree-grid'
-
+//import './plugins/element.js'
 // 导入富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
 // require styles 导入富文本编辑器对应的样式
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+//import 'quill/dist/quill.core.css'
+//import 'quill/dist/quill.snow.css'
+//import 'quill/dist/quill.bubble.css'
 
 
 //NProgress加载进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+const httpUrl = 'https://shopapi.wlsphoenix.de/'
+
+Vue.prototype.httpUrl = httpUrl
+
 import axios from 'axios'
-axios.defaults.baseURL =  'https://devshopapi.wlsphoenix.de/'
+axios.defaults.baseURL =  'https://shopapi.wlsphoenix.de/'
 // 在 request 拦截器中，展示进度条 NProgress.start()
 axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
@@ -38,12 +42,7 @@ axios.interceptors.response.use(config => {
 })
 Vue.prototype.$http = axios
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
 
-
-import store from "./store"
-Vue.prototype.$store = store
 
 
 Vue.config.productionTip = false

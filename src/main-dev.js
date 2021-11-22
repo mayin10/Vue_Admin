@@ -18,12 +18,15 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 
+const httpUrl = 'https://devshopapi.wlsphoenix.de/'
+Vue.prototype.httpUrl = httpUrl
+
 //NProgress加载进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 import axios from 'axios'
-axios.defaults.baseURL =  'https://devshopapi.wlsphoenix.de/'
+axios.defaults.baseURL = httpUrl
 // 在 request 拦截器中，展示进度条 NProgress.start()
 axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
@@ -37,13 +40,6 @@ axios.interceptors.response.use(config => {
   return config
 })
 Vue.prototype.$http = axios
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
-
-
-import store from "./store"
-Vue.prototype.$store = store
 
 
 Vue.config.productionTip = false
